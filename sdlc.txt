@@ -1,0 +1,93 @@
+Phases of the Software Development Life Cycle
+
+Phase 1. Requirements & Analysis:
+Client: Henry Moreno, HR Director of QuickHire Services Ltd
+Problem: Manual logs cause payroll delays, salary mistakes, inaccurate records, and employee disputes
+Users: HR Staff, Employees (at least 2 workers), Corporate clients (final payroll reports)
+Functional Requirements:
+•	Employee registration and information storage
+•	Sign-in / Sign-out with timestamp
+•	Hours worked calculation
+•	Payroll generation (salary = hours × rate)
+•	Overtime, deductions, allowances
+•	Monthly payroll summary
+•	Export reports to CSV and PDF
+Non-functional Requirements:
+•	Security: HR login validation
+•	Accuracy: Precise timestamps
+•	Reliability: Database-based storage
+•	Maintainability: Modular Python files
+•	Usability: simple and understandable UI/CLI
+
+Phase 2. Design:
+Programming Language: Python (using Visual Studio Code)
+System Architecture: Modular / Component-based
+Database: SQLite (or MySQL)
+File Structure (example):
+main.py
+db.py
+employee.py
+attendance.py
+payroll.py
+reports.py
+Database Design:
+•	Employee table (name, role, hourly rate, dept, contact)
+•	Attendance table (time in/out logs, hours worked)
+•	Payroll table (hour totals, net pay)
+UI Design: Text-based CLI or Python simple interface
+Logic Design:
+•	When employee signs in → timestamp saved
+•	When signs out → system calculates hours
+•	Payroll: hours × hourly rate
+•	HR can correct errors only
+
+Phase 3. Implementation:
+Development tools:
+•	VS Code for coding
+•	Python3 and libraries (datetime, sqlite3, csv, etc.)
+Implementation steps:
+1.	Create the database connection file db.py
+2.	Create functions to add/view/edit employees
+3.	Implement sign-in / sign-out time-logging
+4.	Implement hour calculation logic
+5.	Implement payroll generation
+6.	Implement report exporting
+7.	Integrate all modules into main.py
+Coding method:
+•	Modular functions
+•	Separation of data logic vs. business logic
+•	Reusable components
+
+Phase 4. Testing:
+Testing levels:
+•	Unit testing: test each Python function individually
+•	Integration testing: confirm accuracy between attendance and payroll
+•	System testing: run entire workflow end-to-end
+Test scenarios:
+•	Employee forgets to sign out → HR correction
+•	Invalid employee ID → system rejects
+•	Payroll formula correctness
+•	Overtime detection
+•	Exporting to CSV/PDF generates correct file
+Expected result:
+•	No duplicate logs
+•	Correct hours and salary output
+•	Reports are accurate and complete
+
+Phase 5. Deployment:
+Install Python runtime on HR computer
+Deploy system files in local server or computer
+Initialize database with existing employee list
+Create user roles:
+•	HR Admin
+•	Standard employee
+
+Phase 6. Maintenance:
+Fix bugs when discovered
+Update hourly rates when pay raises occur
+Add or remove employees
+Add future improvements such as:
+•	biometric login
+•	mobile authentication
+•	cloud-based data saving
+System optimization and security patches
