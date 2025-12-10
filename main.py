@@ -24,7 +24,7 @@ def employee_menu():
         print("0. Back")
         choice = input("Choice: ").strip()
         if choice == "1":
-            
+
     #validation - all inputs shouldn't be empty
             while True:
                 name = input("Full name: ").strip()
@@ -66,11 +66,18 @@ def employee_menu():
             for r in rows:
                 print(f"{r['id']}: {r['full_name']} | {r['role']} | {r['department']} | rate={r['hourly_rate']}")
         elif choice == "3":
-            emp_id = int(input("Employee ID to update: "))
+            while True:
+                emp_id_input = input("Employee ID to update: ").strip()
+                if emp_id_input.isdigit():
+                    emp_id = int(emp_id_input)
+                    break
+                print("Please enter a valid Employee ID.")
+
             emp = employee.get_employee(emp_id)
             if not emp:
                 print("Employee not found.")
                 continue
+
             print("Leave field blank to keep current value.")
             name = input(f"Full name [{emp['full_name']}]: ") or emp['full_name']
             role = input(f"Role [{emp['role']}]: ") or emp['role']
@@ -81,9 +88,11 @@ def employee_menu():
             employee.update_employee(emp_id, name, role, dept, rate, contact)
         elif choice == "4":
             emp_id = int(input("Employee ID to delete: "))
-            confirm = input("Are you sure? y/n: ")
+            confirm = input("Are you sure? y/n: ").lower()
             if confirm.lower() == "y":
                 employee.delete_employee(emp_id)
+            else:
+                print("Deletion cancelled")
         elif choice == "0":
             break
         else:
