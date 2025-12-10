@@ -24,12 +24,42 @@ def employee_menu():
         print("0. Back")
         choice = input("Choice: ").strip()
         if choice == "1":
-            name = input("Full name: ")
-            role = input("Role: ")
-            dept = input("Department: ")
-            rate = input_float("Hourly rate: ", 0.0)
-            contact = input("Contact: ")
+            
+    #validation - all inputs shouldn't be empty
+            while True:
+                name = input("Full name: ").strip()
+                if name:
+                    break
+                print("Full name cannot be empty. Please try again.")
+
+            while True:
+                role = input("Role: ").strip()
+                if role:
+                    break
+                print("Role cannot be empty. Please try again.")
+
+            while True:
+                dept = input("Department: ").strip()
+                if dept:
+                    break
+                print("Department cannot be empty. Please try again.")
+
+            while True:
+                rate_input = input("Hourly rate: ").strip()
+                if not rate_input:
+                    rate = 0.0
+                    break
+                try:
+                    rate = float(rate_input)
+                    break
+                except ValueError:
+                    print("Invalid number. Please enter a numeric hourly rate.")
+
+            contact = input("Contact (optional): ").strip()
+
             employee.add_employee(name, role, dept, rate, contact)
+
+
         elif choice == "2":
             rows = employee.list_employees()
             print("\nEmployees:")
